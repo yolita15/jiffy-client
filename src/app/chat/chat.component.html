@@ -1,7 +1,10 @@
 <nb-layout>
     <nb-layout-column class="p-0">
-        <nb-chat status="primary" title="Kaloyan">
-            <nb-chat-form>
+        <nb-chat status="primary" class="vh-100" title="Refresh the page to end the chat." [scrollBottom]="true">
+            <nb-chat-message *ngFor="let message of messages" type="text" [message]="message.text"
+                [reply]="message.reply" [avatar]="avatar.url">
+            </nb-chat-message>
+            <nb-chat-form (send)="sendMessage($event)">
             </nb-chat-form>
         </nb-chat>
     </nb-layout-column>
