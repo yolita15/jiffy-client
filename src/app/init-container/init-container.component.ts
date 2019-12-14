@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SignalrService} from '../services/signalr-service/signalr.service';
 
 @Component({
   selector: 'init-container',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InitContainerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private signalrService: SignalrService) {
 
-  ngOnInit() {
   }
+
+  ngOnInit() { }
 
 }
