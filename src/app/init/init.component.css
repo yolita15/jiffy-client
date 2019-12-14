@@ -1,0 +1,43 @@
+.pt-5 {
+    padding-top: 5em;
+}
+
+.pt-4 {
+    padding-top: 4em;
+}
+
+.pt-3 {
+    padding-top: 3em;
+}
+
+.pt-2 {
+    padding-top: 2em;
+}
+
+.pt-1 {
+    padding-top: 1em;
+}
+
+.mt-1 {
+    margin-top: 1em;
+}
+
+.text-center {
+    text-align: center;
+}
+.text-bold {
+    font-weight: bold;
+}
+
+.float-right {
+    float: right;
+}
+
+.d-inline-block {
+    display: inline-block;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+

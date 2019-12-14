@@ -1,0 +1,32 @@
+<nb-card accent="primary" size="small">
+  <nb-card-header>Welcome! You can now create a conversation!</nb-card-header>
+  <nb-card-body class="overflow-hidden">
+    <nb-stepper orientation="horizontal">
+      <nb-step [label]="labelOne">
+        <ng-template #labelOne>First step</ng-template>
+        <div class="text-center">Your awesome username is: </div>
+        <div class="mt-1 text-center text-bold">{{ username }}</div>
+        <div class="pt-2 text-center">
+          <button nbButton nbStepperNext shape="round" size="small" [disabled]="username">Invite a friend</button>
+        </div>
+      </nb-step>
+      <nb-step [label]="labelTwo">
+        <ng-template #labelTwo>Second step</ng-template>
+        <div class="text-center">
+          Enter your friend's username:
+        </div>
+        <div class="mt-1 text-center">
+          <input type="text" id="username" nbInput placeholder="Friend's username" [(ngModel)]="friendUsername">
+        </div>
+        <div class="pt-1 text-center">
+          <button nbButton nbStepperNext shape="round" size="small" [disabled]="friendUsername">Start chat</button>
+        </div>
+      </nb-step>
+      <nb-step [label]="labelThree">
+        <ng-template #labelThree>Third step</ng-template>
+        <div [nbSpinner]="true" nbSpinnerSize="large" nbSpinnerStatus="primary"></div>
+        <div class="pt-5 text-center">Your conversation will start in a minute...</div>
+      </nb-step>
+    </nb-stepper>
+  </nb-card-body>
+</nb-card>
