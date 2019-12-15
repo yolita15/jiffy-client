@@ -15,21 +15,8 @@ export class InitComponent {
 
   friendUsername: string;
 
-  isChatAccepted: boolean;
-
-  constructor(private dialogService: NbDialogService) {
+  constructor() {
     this.friendUsername = '';
-    this.isChatAccepted = false;
-  }
-
-  open() {
-    this.dialogService.open(ChatRequestComponent, {
-      context: {
-        username: 'randUserName'
-      },
-      closeOnBackdropClick: false,
-      closeOnEsc: false
-    }).onClose.subscribe(confirmation =>  { this.isChatAccepted = confirmation; console.log(confirmation) });
   }
 
   onStartChatClick() {

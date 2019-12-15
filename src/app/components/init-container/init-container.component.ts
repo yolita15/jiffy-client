@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import { SignalrService } from 'src/app/services/signalr-service/signalr.service';
 import { Router } from '@angular/router';
 import {ChatService} from '../../services/chat-service/chat.service';
+import {ChatRequestComponent} from '../chat-request/chat-request.component';
+import {NbDialogService} from '@nebular/theme';
 
 @Component({
   selector: 'init-container',
@@ -12,7 +14,7 @@ export class InitContainerComponent {
 
   public username = '';
 
-  constructor(private signalrService: SignalrService, private chatService: ChatService, private router: Router) {
+  constructor(private signalrService: SignalrService, private chatService: ChatService, private router: Router, private dialogService: NbDialogService) {
     this.startConnection();
   }
 
@@ -30,18 +32,29 @@ export class InitContainerComponent {
 
       this.signalrService.on('startChatRequest', friendUsername => {
 
-        this.chatService.setupRTC(friendUsername, true);
+        this.dialogService.open(ChatRequestComponent, {
+          context: {
+            username: friendUsername
+          },
+          closeOnBackdropClick: false,
+          closeOnEsc: false
+        }).onClose.subscribe(confirmation =>  {
 
-        // accept incoming chat
-         this.signalrService.invoke('acceptChatRequest', friendUsername);
+          if (confirmation) {
+            this.chatService.setupRTC(friendUsername, true);
 
-         // stop listening for requests
-         this.signalrService.off('startChatRequest');
-         this.signalrService.off('startChatAccepted');
-         this.signalrService.off('getUsernameResponse');
+            // accept incoming chat
+            this.signalrService.invoke('acceptChatRequest', friendUsername);
 
-         // redirect to chat when accepted
-         this.router.navigate(['/chat']);
+            // stop listening for requests
+            this.signalrService.off('startChatRequest');
+            this.signalrService.off('startChatAccepted');
+            this.signalrService.off('getUsernameResponse');
+
+            // redirect to chat when accepted
+            this.router.navigate(['/chat']);
+          }
+        });
       });
     });
 
