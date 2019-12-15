@@ -1,10 +1,6 @@
 import {Component} from '@angular/core';
-<<<<<<< HEAD:src/app/components/init-container/init-container.component.ts
-import {SignalrService} from '../../services/signalr-service/signalr.service';
-=======
-import {SignalrService} from '../services/signalr-service/signalr.service';
-import {Router} from '@angular/router';
->>>>>>> fc448ec43b50d426aeee6d5cd067d88e5c9db3f1:src/app/init-container/init-container.component.ts
+import { SignalrService } from 'src/app/services/signalr-service/signalr.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'init-container',
