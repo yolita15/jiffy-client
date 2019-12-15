@@ -34,6 +34,9 @@ export class InitContainerComponent {
          // accept incoming chat
          this.signalrService.invoke('acceptChatRequest', friendUsername);
 
+         // stop listening for chat requests
+         this.signalrService.off('startChatRequest');
+
          // redirect to chat when accepted
          this.router.navigate(['/chat']);
        }

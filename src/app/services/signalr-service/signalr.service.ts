@@ -19,7 +19,10 @@ export class SignalrService {
   public invoke(command: string, ...args) {
     this.hubConnection
       .invoke(command, ...args)
-      .catch(_ => alert('Error!'));
+      .catch(_ => {
+        console.log(_);
+        alert('Error!');
+      });
   }
 
   public on(event: string, callback) {
