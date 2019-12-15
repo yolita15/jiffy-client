@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import { SignalrService } from 'src/app/services/signalr-service/signalr.service';
 import { Router } from '@angular/router';
+import {ChatService} from '../../services/chat-service/chat.service';
 
 @Component({
   selector: 'init-container',
@@ -11,7 +12,7 @@ export class InitContainerComponent {
 
   public username = '';
 
-  constructor(private signalrService: SignalrService, private router: Router) {
+  constructor(private signalrService: SignalrService, private chatService: ChatService, private router: Router) {
     this.startConnection();
   }
 
@@ -28,7 +29,10 @@ export class InitContainerComponent {
       this.username = username;
 
       this.signalrService.on('startChatRequest', friendUsername => {
-         // accept incoming chat
+
+        this.chatService.setupRTC(friendUsername, true);
+
+        // accept incoming chat
          this.signalrService.invoke('acceptChatRequest', friendUsername);
 
          // stop listening for requests
@@ -47,6 +51,9 @@ export class InitContainerComponent {
 
   public startChat(friendUsername) {
     this.signalrService.on('startChatAccepted', _ => {
+
+      this.chatService.setupRTC(friendUsername, false);
+
       // redirect to chat when friend accepted
       this.router.navigate(['/chat']);
     });
