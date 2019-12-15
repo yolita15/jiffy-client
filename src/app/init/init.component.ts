@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'init-component',
@@ -7,7 +7,13 @@ import { Component, Input, Output } from '@angular/core';
 })
 export class InitComponent {
 
-  @Input()
-  username = '';
+  @Input() username = '';
+
+  @Output() onStartChat: EventEmitter<string> = new EventEmitter<string>();
+
   friendUsername = '';
+
+  onStartChatClick() {
+    this.onStartChat.emit(this.friendUsername);
+  }
 }

@@ -25,4 +25,8 @@ export class SignalrService {
   public on(event: string, callback) {
     this.hubConnection.on(event, data => callback(data));
   }
+
+  public off(event: string) {
+    return this.hubConnection.off(event);
+  }
 }
