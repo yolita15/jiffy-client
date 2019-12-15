@@ -7,7 +7,7 @@
     <nb-card accent="primary" size="small">
       <nb-card-header>Welcome! You can now start a conversation!</nb-card-header>
       <nb-card-body class="overflow-hidden">
-        <nb-stepper orientation="horizontal">
+        <nb-stepper orientation="horizontal" [disableStepNavigation]="username">
           <nb-step [label]="labelOne">
             <ng-template #labelOne>First step</ng-template>
             <div class="text-center">Your awesome username is: </div>
