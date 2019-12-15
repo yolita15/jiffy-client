@@ -1,12 +1,13 @@
 <nb-layout center>
-  <nb-layout-header fixed>
-    My Awesome Company
+  <nb-layout-header class="company-name" fixed>
+    Jifꟻy
+    <!-- <button nbButton (click)="open()">Open Dialog</button> -->
   </nb-layout-header>
   <nb-layout-column class="my-auto">
     <nb-card accent="primary" size="small">
       <nb-card-header>Welcome! You can now start a conversation!</nb-card-header>
       <nb-card-body class="overflow-hidden">
-        <nb-stepper orientation="horizontal">
+        <nb-stepper orientation="horizontal" [disableStepNavigation]="username">
           <nb-step [label]="labelOne">
             <ng-template #labelOne>First step</ng-template>
             <div class="text-center">Your awesome username is: </div>
@@ -15,17 +16,20 @@
               <button nbButton nbStepperNext shape="round" size="small" [disabled]="username">Invite a friend</button>
             </div>
           </nb-step>
-          <nb-step [label]="labelTwo">
+          <nb-step [label]="labelTwo" [stepControl]="friendUsernameForm">
             <ng-template #labelTwo>Second step</ng-template>
             <div class="text-center">
               Enter your friend's username:
             </div>
-            <div class="mt-1 text-center">
-              <input type="text" id="username" nbInput placeholder="Friend's username" [(ngModel)]="friendUsername">
-            </div>
-            <div class="pt-1 text-center">
-              <button nbButton nbStepperNext shape="round" size="small" [disabled]="friendUsername" (click)="onStartChatClick()">Start chat</button>
-            </div>
+            <form #friendUsernameForm="ngForm">
+              <div class="mt-1 text-center">
+                <input type="text" id="username" name="friendUsernameInput" nbInput placeholder="Friend's username" [(ngModel)]="friendUsername" required>
+              </div>
+              <div class="pt-1 text-center">
+                <button nbButton nbStepperNext shape="round" size="small" [disabled]="friendUsername"
+                  (click)="onStartChatClick()">Start chat</button>
+              </div>
+            </form>
           </nb-step>
           <nb-step [label]="labelThree">
             <ng-template #labelThree>Third step</ng-template>

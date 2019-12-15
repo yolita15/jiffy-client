@@ -1,0 +1,17 @@
+<nb-card status="primary" size="tiny">
+  <nb-card-header>Chat request</nb-card-header>
+  <nb-card-body class="text-center">
+    <div class="pt-1">
+      <span class="text-bold">{{ username }}</span> wants to chat!
+    </div>
+    <span class="text-bold">Do you accept?</span>
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="float-right">
+      <button nbButton size="small" status="success" (click)="accept()">Accept</button>
+    </div>
+    <div>
+      <button nbButton size="small" status="danger" (click)="dismiss()">Deny</button>
+    </div>
+  </nb-card-footer>
+</nb-card>
