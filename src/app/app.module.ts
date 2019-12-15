@@ -5,13 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InitContainerComponent } from './components/init-container/init-container.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbStepperModule, NbCardModule, NbButtonModule, NbInputModule, NbSpinnerModule, NbChatModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbStepperModule, NbCardModule, NbButtonModule, NbInputModule, NbSpinnerModule, NbChatModule, NbDialogModule, NbDialogConfig } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { InitComponent } from './components/init/init.component';
 import { FormsModule } from '@angular/forms';
 import { ChatContainerComponent } from './components/chat-container/chat-container.component';
 import { ChatComponent } from './components/chat/chat.component';
-import {SignalrService} from './services/signalr-service/signalr.service';
+import { SignalrService } from './services/signalr-service/signalr.service';
+import { ChatRequestComponent } from './components/chat-request/chat-request.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {SignalrService} from './services/signalr-service/signalr.service';
     InitContainerComponent,
     InitComponent,
     ChatContainerComponent,
-    ChatComponent
+    ChatComponent,
+    ChatRequestComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +29,7 @@ import {SignalrService} from './services/signalr-service/signalr.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
+    NbDialogModule.forRoot(),
     NbLayoutModule,
     NbEvaIconsModule,
     NbCardModule,
@@ -35,6 +38,9 @@ import {SignalrService} from './services/signalr-service/signalr.service';
     NbInputModule,
     NbSpinnerModule,
     NbChatModule
+  ],
+  entryComponents: [
+    ChatRequestComponent
   ],
   providers: [
     SignalrService
