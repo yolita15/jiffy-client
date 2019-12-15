@@ -24,7 +24,7 @@
               <input type="text" id="username" nbInput placeholder="Friend's username" [(ngModel)]="friendUsername">
             </div>
             <div class="pt-1 text-center">
-              <button nbButton nbStepperNext shape="round" size="small" [disabled]="friendUsername">Start chat</button>
+              <button nbButton nbStepperNext shape="round" size="small" [disabled]="friendUsername" (click)="onStartChatClick()">Start chat</button>
             </div>
           </nb-step>
           <nb-step [label]="labelThree">
