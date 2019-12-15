@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 export class InitContainerComponent {
 
   public username = '';
-  public friendUsername = '';
 
   constructor(private signalrService: SignalrService, private router: Router) {
     this.startConnection();
@@ -29,8 +28,6 @@ export class InitContainerComponent {
       this.username = username;
 
       this.signalrService.on('startChatRequest', friendUsername => {
-
-       if (this.friendUsername === '') {
          // accept incoming chat
          this.signalrService.invoke('acceptChatRequest', friendUsername);
 
@@ -41,7 +38,6 @@ export class InitContainerComponent {
 
          // redirect to chat when accepted
          this.router.navigate(['/chat']);
-       }
       });
     });
 
