@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {SignalrService} from '../services/signalr-service/signalr.service';
+import {SignalrService} from '../../services/signalr-service/signalr.service';
 
 @Component({
   selector: 'init-container',
