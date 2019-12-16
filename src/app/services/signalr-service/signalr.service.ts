@@ -10,7 +10,7 @@ export class SignalrService {
 
   public startConnection() {
     this.hubConnection = new HubConnectionBuilder()
-      .withUrl('http://localhost:1337/jiffy')
+      .withUrl('https://api.jiffy.kaloyanmanev.com/jiffy')
       .build();
 
     return this.hubConnection.start();

@@ -13,6 +13,8 @@ import { ChatComponent } from './components/chat/chat.component';
 import { SignalrService } from './services/signalr-service/signalr.service';
 import { ChatRequestComponent } from './components/chat-request/chat-request.component';
 import { ChatService } from './services/chat-service/chat.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { ChatService } from './services/chat-service/chat.service';
     NbButtonModule,
     NbInputModule,
     NbSpinnerModule,
-    NbChatModule
+    NbChatModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   entryComponents: [
     ChatRequestComponent
